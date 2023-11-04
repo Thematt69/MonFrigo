@@ -1,0 +1,6 @@
+{
+  "appTitle": "MonFrigo",
+  "@appTitle": {
+    "description": "The application that helps you manage your fridge"
+  }
+}
