@@ -9,7 +9,7 @@ environment:
   sdk: '>=2.18.0 <4.0.0'
 
 dependencies:
-  cloud_firestore: ^4.12.2
+  cloud_firestore: ^4.13.1
   file_picker: ^6.1.1
   firebase_auth: ^4.12.1
   firebase_core: ^2.21.0
