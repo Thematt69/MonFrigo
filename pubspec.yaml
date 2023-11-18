@@ -16,7 +16,7 @@ dependencies:
   firebase_crashlytics: ^3.4.4 # No Windows
   firebase_messaging: ^14.7.4
   firebase_performance: ^0.9.3+3 # No Windows
-  firebase_storage: ^11.4.1
+  firebase_storage: ^11.5.1
   flutter: { sdk: flutter }
   flutter_local_notifications: ^16.1.0
   flutter_localizations: { sdk: flutter }
