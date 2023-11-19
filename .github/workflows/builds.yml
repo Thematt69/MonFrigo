@@ -1,4 +1,4 @@
-name: Intrégration continue
+name: Analyze, Build and Deploy
 
 on:
   push:
