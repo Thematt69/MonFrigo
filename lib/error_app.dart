@@ -32,25 +32,36 @@ class ErrorApp extends StatelessWidget {
         colorScheme: darkColorScheme,
       ),
       home: Builder(
-        builder: (context) => Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Une erreur est survenue !',
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Veuillez réessayer plus tard',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-              ],
+        builder: (context) => const ErrorPage(),
+      ),
+    );
+  }
+}
+
+class ErrorPage extends StatelessWidget {
+  const ErrorPage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Une erreur est survenue !',
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
             ),
-          ),
+            const SizedBox(height: 8),
+            Text(
+              'Veuillez réessayer plus tard',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ],
         ),
       ),
     );

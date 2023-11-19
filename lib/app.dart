@@ -2,6 +2,7 @@ import 'dart:developer' as dev;
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'blocs/bloc_provider.dart';
 import 'blocs/firebase_auth_bloc.dart';
+import 'blocs/firebase_storage_bloc.dart';
 import 'extension/remote_notification.dart';
 import 'firebase_options.dart';
 import 'routes/router.dart';
@@ -51,18 +53,21 @@ class _MyAppState extends State<MyApp> {
       );
     });
 
-    final localNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    await localNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(
-          const AndroidNotificationChannel(
-            'default_notification_channel_id',
-            'Toutes les notifications',
-            ledColor: Color(0xFFF96152),
-            importance: Importance.max,
-          ),
-        );
+    if (!kIsWeb) {
+      final localNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+      await localNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.createNotificationChannel(
+            const AndroidNotificationChannel(
+              'default_notification_channel_id',
+              'Toutes les notifications',
+              ledColor: Color(0xFFF96152),
+              importance: Importance.max,
+            ),
+          );
+    }
 
     await FirebaseMessaging.instance
         .getToken(
@@ -112,6 +117,7 @@ class _MyAppState extends State<MyApp> {
       key: GlobalKey(),
       blocs: <BlocBase>[
         FirebaseAuthBloc(),
+        FirebaseStorageBloc(),
       ],
       child: MaterialApp.router(
         restorationScopeId: 'com.thematt69.mon_frigo',

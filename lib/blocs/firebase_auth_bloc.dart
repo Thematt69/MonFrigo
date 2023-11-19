@@ -1,8 +1,8 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../extension/exception.dart';
@@ -10,62 +10,55 @@ import 'bloc_provider.dart';
 
 class FirebaseAuthBloc extends BlocBase {
   @override
-  void initState() {
-    try {
-      FirebaseAuth.instance.authStateChanges().listen((User? user) {
-        if (user == null) {
-          log(
-            'User is currently signed out!',
-            name: 'FirebaseAuthBloc | initState',
-          );
-        } else {
-          log(
-            'User $user is signed in!',
-            name: 'FirebaseAuthBloc | initState',
-          );
-        }
-      });
-    } catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | initState');
-    }
-  }
+  void initState() {}
 
   @override
   void dispose() {}
 
-  User? get currentUser => FirebaseAuth.instance.currentUser;
-
-  Future<void> deleteCurrentUser() async {
+  Future<Either<void, String>> deleteCurrentUser() async {
     try {
-      await currentUser?.delete();
-    } on FirebaseException catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | deleteCurrentUser');
+      await FirebaseAuth.instance.currentUser?.delete();
+      return left(null);
+    } on FirebaseAuthException catch (e, s) {
+      final exception =
+          e.logException(s, 'FirebaseAuthBloc | deleteCurrentUser');
+      return right(exception);
     } catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | deleteCurrentUser');
+      final exception =
+          e.logException(s, 'FirebaseAuthBloc | deleteCurrentUser');
+      return right(exception);
     }
   }
 
-  Future<void> sendPasswordResetEmail(String email) async {
+  Future<Either<void, String>> sendPasswordResetEmail(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-    } on FirebaseException catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | sendPasswordResetEmail');
+      return left(null);
+    } on FirebaseAuthException catch (e, s) {
+      final exception =
+          e.logException(s, 'FirebaseAuthBloc | sendPasswordResetEmail');
+      return right(exception);
     } catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | sendPasswordResetEmail');
+      final exception =
+          e.logException(s, 'FirebaseAuthBloc | sendPasswordResetEmail');
+      return right(exception);
     }
   }
 
-  Future<void> signOut() async {
+  Future<Either<void, String>> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
-    } on FirebaseException catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | signOut');
+      return left(null);
+    } on FirebaseAuthException catch (e, s) {
+      final exception = e.logException(s, 'FirebaseAuthBloc | signOut');
+      return right(exception);
     } catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | signOut');
+      final exception = e.logException(s, 'FirebaseAuthBloc | signOut');
+      return right(exception);
     }
   }
 
-  Future<UserCredential?> createUserWithEmailAndPassword({
+  Future<Either<UserCredential?, String>> createUserWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -74,16 +67,23 @@ class FirebaseAuthBloc extends BlocBase {
         email: email,
         password: password,
       );
-      return user;
-    } on FirebaseException catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | createUserWithEmailAndPassword');
+      return left(user);
+    } on FirebaseAuthException catch (e, s) {
+      final exception = e.logException(
+        s,
+        'FirebaseAuthBloc | createUserWithEmailAndPassword',
+      );
+      return right(exception);
     } catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | createUserWithEmailAndPassword');
+      final exception = e.logException(
+        s,
+        'FirebaseAuthBloc | createUserWithEmailAndPassword',
+      );
+      return right(exception);
     }
-    return null;
   }
 
-  Future<UserCredential?> signInWithEmailAndPassword({
+  Future<Either<UserCredential?, String>> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -92,16 +92,19 @@ class FirebaseAuthBloc extends BlocBase {
         email: email,
         password: password,
       );
-      return user;
-    } on FirebaseException catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | signInWithEmailAndPassword');
+      return left(user);
+    } on FirebaseAuthException catch (e, s) {
+      final exception =
+          e.logException(s, 'FirebaseAuthBloc | signInWithEmailAndPassword');
+      return right(exception);
     } catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | signInWithEmailAndPassword');
+      final exception =
+          e.logException(s, 'FirebaseAuthBloc | signInWithEmailAndPassword');
+      return right(exception);
     }
-    return null;
   }
 
-  Future<UserCredential?> signInWithGoogle() async {
+  Future<Either<UserCredential?, String>> signInWithGoogle() async {
     try {
       if (kIsWeb) {
         final googleProvider = GoogleAuthProvider();
@@ -109,9 +112,9 @@ class FirebaseAuthBloc extends BlocBase {
         googleProvider
             .addScope('https://www.googleapis.com/auth/userinfo.profile');
 
-        final userGoogle =
+        final user =
             await FirebaseAuth.instance.signInWithPopup(googleProvider);
-        return userGoogle;
+        return left(user);
       } else if (Platform.isWindows) {
         throw UnimplementedError('signInWithGoogle not implemented on Windows');
       } else {
@@ -126,13 +129,16 @@ class FirebaseAuthBloc extends BlocBase {
 
         final user =
             await FirebaseAuth.instance.signInWithCredential(credential);
-        return user;
+        return left(user);
       }
-    } on FirebaseException catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | signInWithGoogle');
+    } on FirebaseAuthException catch (e, s) {
+      final exception =
+          e.logException(s, 'FirebaseAuthBloc | signInWithGoogle');
+      return right(exception);
     } catch (e, s) {
-      e.logException(s, 'FirebaseAuthBloc | signInWithGoogle');
+      final exception =
+          e.logException(s, 'FirebaseAuthBloc | signInWithGoogle');
+      return right(exception);
     }
-    return null;
   }
 }
