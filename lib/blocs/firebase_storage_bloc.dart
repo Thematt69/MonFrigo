@@ -1,11 +1,11 @@
 import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import '../extension/exception.dart';
 import 'bloc_provider.dart';
-import 'firebase_auth_bloc.dart';
 
 class FirebaseStorageBloc extends BlocBase {
   final FirebaseStorage _storage = FirebaseStorage.instance;
@@ -48,8 +48,7 @@ class FirebaseStorageBloc extends BlocBase {
       final SettableMetadata metadata = SettableMetadata(
         cacheControl: 'max-age=172800', // 2 jours
         customMetadata: <String, String>{
-          'userUid':
-              BlocProvider.master<FirebaseAuthBloc>().currentUser?.uid ?? 'N/A',
+          'userUid': FirebaseAuth.instance.currentUser?.uid ?? 'N/A',
         },
       );
       await _storage.ref().child(fileName).putData(fileBytes, metadata);

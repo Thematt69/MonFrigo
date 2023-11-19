@@ -1,35 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../pages/sample_item_details_view.dart';
-import '../pages/sample_item_list_view.dart';
+import '../error_app.dart';
+import '../pages/home_page.dart';
+import '../pages/sign_in_page.dart';
 
-enum AppRoute { sampleItemListView, sampleItemDetailsView }
+enum AppRoute {
+  signIn, // Se connecter ou s'inscrire
+  home, // Accueil
+}
 
 final goRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/',
   debugLogDiagnostics: kDebugMode,
-  redirect: (BuildContext context, GoRouterState state) {
-    // if (AuthState.of(context).isSignedIn) {
-    //   return '/signin';
-    // } else {
-    //   return null;
-    // }
-    return null;
-  },
+  errorBuilder: (context, state) => const ErrorPage(),
   routes: [
     GoRoute(
+      path: '/sign-in',
+      name: AppRoute.signIn.name,
+      builder: (context, state) => const SignInPage(),
+    ),
+    GoRoute(
       path: '/',
-      name: AppRoute.sampleItemListView.name,
-      builder: (context, state) => const SampleItemListView(),
-      routes: [
-        GoRoute(
-          path: 'details',
-          name: AppRoute.sampleItemDetailsView.name,
-          builder: (context, state) => const SampleItemDetailsView(),
-        ),
-      ],
+      name: AppRoute.home.name,
+      builder: (context, state) => const HomePage(),
     ),
   ],
 );
