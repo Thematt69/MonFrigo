@@ -1,9 +1,9 @@
 name: mon_frigo
-description: A new Flutter project.
+description: Qu'est-ce qu'il y a dans mon frigo ?
 
 publish_to: 'none'
 
-version: 0.0.1+2
+version: 0.0.1+3
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
