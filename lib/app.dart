@@ -41,40 +41,45 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    _initMessaging();
+    if (!kIsWeb) {
+      _initMessaging();
+    }
     super.initState();
   }
 
   Future<void> _initMessaging() async {
-    await FirebaseMessaging.instance.requestPermission().then((settings) {
+    await FirebaseMessaging.instance
+        .requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    )
+        .then((settings) {
       dev.log(
         'User granted permission => ${settings.authorizationStatus}',
         name: 'FirebaseMessaging',
       );
     });
 
-    if (!kIsWeb) {
-      final localNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    final localNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-      await localNotificationsPlugin
-          .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
-          ?.createNotificationChannel(
-            const AndroidNotificationChannel(
-              'default_notification_channel_id',
-              'Toutes les notifications',
-              ledColor: Color(0xFFF96152),
-              importance: Importance.max,
-            ),
-          );
-    }
+    await localNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(
+          const AndroidNotificationChannel(
+            'default_notification_channel_id',
+            'Toutes les notifications',
+            ledColor: Color(0xFFF96152),
+            importance: Importance.max,
+          ),
+        );
 
-    await FirebaseMessaging.instance
-        .getToken(
-      vapidKey:
-          'BN_kI3MUgGCCu-W7YXrBJ0T7kQKCr3A7STHqGMTrejbrboXssBSyqSC5ygxG0LTjHBgaoIhtQ66DviLx1TWnKLs',
-    )
-        .then((fcmToken) {
+    await FirebaseMessaging.instance.getToken().then((fcmToken) {
       dev.log('FCM Token => $fcmToken', name: 'FirebaseMessaging');
     });
 
