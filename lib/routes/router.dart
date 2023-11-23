@@ -31,47 +31,47 @@ CustomTransitionPage<T> _noTransitionBuilder<T>({
   );
 }
 
-CustomTransitionPage<T> _leftToRightBuilder<T>({
-  required GoRouterState state,
-  required Widget child,
-}) {
-  const begin = Offset(-1, 0);
-  const end = Offset.zero;
-  const curve = Curves.easeOut;
+// CustomTransitionPage<T> _leftToRightBuilder<T>({
+//   required GoRouterState state,
+//   required Widget child,
+// }) {
+//   const begin = Offset(-1, 0);
+//   const end = Offset.zero;
+//   const curve = Curves.easeOut;
 
-  final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+//   final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-  return CustomTransitionPage<T>(
-    key: state.pageKey,
-    child: child,
-    transitionsBuilder: (_, Animation<double> animation, __, child) =>
-        SlideTransition(
-      position: animation.drive(tween),
-      child: child,
-    ),
-  );
-}
+//   return CustomTransitionPage<T>(
+//     key: state.pageKey,
+//     child: child,
+//     transitionsBuilder: (_, Animation<double> animation, __, child) =>
+//         SlideTransition(
+//       position: animation.drive(tween),
+//       child: child,
+//     ),
+//   );
+// }
 
-CustomTransitionPage<T> _rightToLeftBuilder<T>({
-  required GoRouterState state,
-  required Widget child,
-}) {
-  const begin = Offset(1, 0);
-  const end = Offset.zero;
-  const curve = Curves.easeOut;
+// CustomTransitionPage<T> _rightToLeftBuilder<T>({
+//   required GoRouterState state,
+//   required Widget child,
+// }) {
+//   const begin = Offset(1, 0);
+//   const end = Offset.zero;
+//   const curve = Curves.easeOut;
 
-  final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+//   final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-  return CustomTransitionPage<T>(
-    key: state.pageKey,
-    child: child,
-    transitionsBuilder: (_, Animation<double> animation, __, child) =>
-        SlideTransition(
-      position: animation.drive(tween),
-      child: child,
-    ),
-  );
-}
+//   return CustomTransitionPage<T>(
+//     key: state.pageKey,
+//     child: child,
+//     transitionsBuilder: (_, Animation<double> animation, __, child) =>
+//         SlideTransition(
+//       position: animation.drive(tween),
+//       child: child,
+//     ),
+//   );
+// }
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
