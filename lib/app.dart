@@ -7,10 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:go_router/go_router.dart';
 
 import 'blocs/bloc_provider.dart';
 import 'blocs/firebase_auth_bloc.dart';
 import 'blocs/firebase_storage_bloc.dart';
+import 'extension/build_context.dart';
 import 'extension/remote_notification.dart';
 import 'firebase_options.dart';
 import 'routes/router.dart';
@@ -41,40 +43,45 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    _initMessaging();
+    if (!kIsWeb) {
+      _initMessaging();
+    }
     super.initState();
   }
 
   Future<void> _initMessaging() async {
-    await FirebaseMessaging.instance.requestPermission().then((settings) {
+    await FirebaseMessaging.instance
+        .requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    )
+        .then((settings) {
       dev.log(
         'User granted permission => ${settings.authorizationStatus}',
         name: 'FirebaseMessaging',
       );
     });
 
-    if (!kIsWeb) {
-      final localNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    final localNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-      await localNotificationsPlugin
-          .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
-          ?.createNotificationChannel(
-            const AndroidNotificationChannel(
-              'default_notification_channel_id',
-              'Toutes les notifications',
-              ledColor: Color(0xFFF96152),
-              importance: Importance.max,
-            ),
-          );
-    }
+    await localNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.createNotificationChannel(
+          const AndroidNotificationChannel(
+            'default_notification_channel_id',
+            'Toutes les notifications',
+            ledColor: Color(0xFFF96152),
+            importance: Importance.max,
+          ),
+        );
 
-    await FirebaseMessaging.instance
-        .getToken(
-      vapidKey:
-          'BN_kI3MUgGCCu-W7YXrBJ0T7kQKCr3A7STHqGMTrejbrboXssBSyqSC5ygxG0LTjHBgaoIhtQ66DviLx1TWnKLs',
-    )
-        .then((fcmToken) {
+    await FirebaseMessaging.instance.getToken().then((fcmToken) {
       dev.log('FCM Token => $fcmToken', name: 'FirebaseMessaging');
     });
 
@@ -103,12 +110,24 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _handleMessage(RemoteMessage message) {
-    // TODO: Redirect to notification page
-    // Navigator.pushNamed(
-    //   context,
-    //   '/chat',
-    //   arguments: ChatArguments(message),
-    // );
+    // NOTE: Lorsque d'une notification est envoyé, ses données sont enregistrées dans Firestore
+    if (navigatorKey.currentContext != null &&
+        message.notification?.title != null &&
+        message.notification?.body != null &&
+        message.data['uuid'] is String) {
+      context.showMessagingSnackBar(
+        title: message.notification!.title!,
+        body: message.notification!.body!,
+        onPressed: () {
+          context.goNamed(
+            AppRoute.alerts.name,
+            pathParameters: {
+              'uuid': message.data['uuid'] as String,
+            },
+          );
+        },
+      );
+    }
   }
 
   @override

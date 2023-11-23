@@ -1,4 +1,4 @@
-name: Intrégration continue
+name: Analyze
 
 on:
   push:

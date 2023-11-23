@@ -35,7 +35,7 @@ class _SignInPageState extends State<SignInPage> {
     result.match(
       (user) {
         if (user != null) {
-          context.goNamed(AppRoute.home.name);
+          context.goNamed(AppRoute.fridge.name);
         }
       },
       (exception) => context.showErrorSnackBar(exception),
@@ -75,6 +75,7 @@ class _SignInPageState extends State<SignInPage> {
           padding: const EdgeInsets.all(16),
           child: Form(
             key: _formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -93,7 +94,6 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Veuillez entrer votre email';
@@ -127,8 +127,8 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     obscureText: !passwordVisibility,
                     textInputAction: TextInputAction.done,
+                    onEditingComplete: _signIn,
                     keyboardType: TextInputType.visiblePassword,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Veuillez entrer votre mot de passe';
