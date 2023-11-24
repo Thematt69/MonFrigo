@@ -11,8 +11,8 @@ jobs:
     name: Analyze
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.3
-      - uses: subosito/flutter-action@v2.10.0
+      - uses: actions/checkout@v4.1.1
+      - uses: subosito/flutter-action@v2.12.0
         with:
           flutter-version: ${{ vars.FLUTTER_VERSION }}
           cache: true

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../blocs/bloc_provider.dart';
 import '../blocs/firebase_auth_bloc.dart';
+import '../extension/build_context.dart';
 import '../routes/router.dart';
 import '../widgets/app_scaffold.dart';
 
@@ -18,7 +19,7 @@ class ProfilePage extends StatelessWidget {
         children: [
           Text(
             'Mon profil :',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: context.textTheme.titleMedium,
           ),
           const Text('Modifier mon profil et mes paramètres'),
           const Text('Supprimer mon compte'),

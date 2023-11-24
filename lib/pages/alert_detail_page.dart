@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../extension/build_context.dart';
 import '../widgets/app_scaffold.dart';
 
 class AlertDetailPage extends StatelessWidget {
@@ -19,7 +20,7 @@ class AlertDetailPage extends StatelessWidget {
         children: [
           Text(
             uuid,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: context.textTheme.titleMedium,
           ),
         ],
       ),

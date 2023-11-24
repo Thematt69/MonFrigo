@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../extension/build_context.dart';
 import '../widgets/app_scaffold.dart';
 
 class ShoppingListPage extends StatelessWidget {
@@ -14,7 +15,7 @@ class ShoppingListPage extends StatelessWidget {
         children: [
           Text(
             'Ma liste de courses :',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: context.textTheme.titleMedium,
           ),
           const Text('Visualiser la liste'),
           const Text('Suggérer les produits en faible quantité'),

@@ -1,26 +1,52 @@
 import 'package:flutter/material.dart';
 
+import '../utils/app_breakpoint.dart';
+
 extension BuildContextExtension on BuildContext {
+  /// Extension on ThemeData
+  ThemeData get theme => Theme.of(this);
+
+  /// Extension on TextTheme
+  TextTheme get textTheme => Theme.of(this).textTheme;
+
+  /// Extension on ColorScheme
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
+
+  /// Extension on MediaQueryData
+  MediaQueryData get mediaQuery => MediaQuery.of(this);
+
+  /// Extension on ScaffoldMessengerState
+  ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
+
+  /// Extension to check if the app run on mobile
+  bool get isOnMobile => AppBreakpoint.isSmall(mediaQuery.size.width);
+
+  /// Extension to check if the app run on small mobile
+  bool get isOnTablet => AppBreakpoint.isMedium(mediaQuery.size.width);
+
+  /// Extension to check if the app run on small mobile
+  bool get isOnDesktop => AppBreakpoint.isLarge(mediaQuery.size.width);
+
   void showErrorSnackBar(String exception) {
-    ScaffoldMessenger.of(this)
+    scaffoldMessenger
       ..hideCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
-          backgroundColor: Theme.of(this).colorScheme.error,
+          backgroundColor: colorScheme.error,
           behavior: SnackBarBehavior.floating,
           content: Row(
             children: [
               Icon(
                 Icons.warning_amber,
-                color: Theme.of(this).colorScheme.onError,
+                color: colorScheme.onError,
               ),
               const SizedBox(width: 4),
               Expanded(
                 child: Text(
                   exception,
-                  style: Theme.of(this).textTheme.bodyMedium!.copyWith(
-                        color: Theme.of(this).colorScheme.onError,
-                      ),
+                  style: textTheme.bodyMedium!.copyWith(
+                    color: colorScheme.onError,
+                  ),
                 ),
               ),
             ],
@@ -34,17 +60,17 @@ extension BuildContextExtension on BuildContext {
     required String body,
     required VoidCallback onPressed,
   }) {
-    ScaffoldMessenger.of(this)
+    scaffoldMessenger
       ..hideCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
-          backgroundColor: Theme.of(this).colorScheme.primary,
+          backgroundColor: colorScheme.primary,
           behavior: SnackBarBehavior.floating,
           action: SnackBarAction(
             label: 'Afficher',
             onPressed: () {
               onPressed();
-              ScaffoldMessenger.of(this).hideCurrentSnackBar();
+              scaffoldMessenger.hideCurrentSnackBar();
             },
           ),
           content: Column(
@@ -54,15 +80,15 @@ extension BuildContextExtension on BuildContext {
                 children: [
                   Icon(
                     Icons.notifications_outlined,
-                    color: Theme.of(this).colorScheme.onPrimary,
+                    color: colorScheme.onPrimary,
                   ),
                   const SizedBox(width: 4),
                   Expanded(
                     child: Text(
                       title,
-                      style: Theme.of(this).textTheme.bodyMedium!.copyWith(
-                            color: Theme.of(this).colorScheme.onPrimary,
-                          ),
+                      style: textTheme.bodyMedium!.copyWith(
+                        color: colorScheme.onPrimary,
+                      ),
                     ),
                   ),
                 ],
@@ -70,9 +96,9 @@ extension BuildContextExtension on BuildContext {
               const SizedBox(height: 4),
               Text(
                 body,
-                style: Theme.of(this).textTheme.bodyMedium!.copyWith(
-                      color: Theme.of(this).colorScheme.onPrimary,
-                    ),
+                style: textTheme.bodyMedium!.copyWith(
+                  color: colorScheme.onPrimary,
+                ),
               ),
             ],
           ),
