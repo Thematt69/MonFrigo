@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../extension/build_context.dart';
 import '../widgets/app_scaffold.dart';
 
 class FridgePage extends StatelessWidget {
@@ -14,7 +15,7 @@ class FridgePage extends StatelessWidget {
         children: [
           Text(
             'Mon frigo :',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: context.textTheme.titleMedium,
           ),
           const Text('Visualiser les produits'),
           const Text('Ajouter des produits'),

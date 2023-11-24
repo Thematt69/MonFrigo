@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../extension/build_context.dart';
 import 'app_navigation_bar.dart';
 import 'app_navigation_rail.dart';
 
@@ -17,13 +18,13 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: kIsWeb
+      bottomNavigationBar: !context.isOnMobile
           ? null
           : AppNavigationBar(
               key: ValueKey(index),
               index: index,
             ),
-      body: kIsWeb
+      body: !context.isOnMobile
           ? Row(
               children: [
                 AppNavigationRail(

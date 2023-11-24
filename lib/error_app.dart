@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'extension/build_context.dart';
 import 'themes/color_schemes.dart';
 
 class ErrorApp extends StatelessWidget {
@@ -52,14 +53,14 @@ class ErrorPage extends StatelessWidget {
           children: [
             Text(
               'Une erreur est survenue !',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+              style: context.textTheme.headlineMedium?.copyWith(
+                color: context.colorScheme.primary,
+              ),
             ),
             const SizedBox(height: 8),
             Text(
               'Veuillez réessayer plus tard',
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: context.textTheme.bodyLarge,
             ),
           ],
         ),

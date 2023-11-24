@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../extension/build_context.dart';
 import '../widgets/app_scaffold.dart';
 
 class AlertsPage extends StatelessWidget {
@@ -14,7 +15,7 @@ class AlertsPage extends StatelessWidget {
         children: [
           Text(
             'Mes alertes :',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: context.textTheme.titleMedium,
           ),
           const Text('Visualiser mes alertes'),
           const Text('Être averti des produits bientôt périmés'),
