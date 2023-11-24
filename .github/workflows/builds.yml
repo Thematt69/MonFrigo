@@ -33,8 +33,8 @@ jobs:
           base64 -d -i upload-keystore.encoded > ./android/app/keystore.jks
       - uses: actions/setup-java@v3
         with:
-          distribution: "oracle"
-          java-version: "17.x"
+          distribution: "zulu"
+          java-version: "12.x"
       - uses: subosito/flutter-action@v2.12.0
         with:
           flutter-version: ${{ vars.FLUTTER_VERSION }}
