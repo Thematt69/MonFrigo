@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../mock_values.dart';
 import '../routes/router.dart';
 
 class AppNavigationBar extends StatelessWidget {
@@ -16,6 +18,7 @@ class AppNavigationBar extends StatelessWidget {
     return NavigationBar(
       selectedIndex: index,
       onDestinationSelected: (int selectedIndex) {
+        if (index == selectedIndex) return;
         switch (selectedIndex) {
           case 0:
             context.goNamed(AppRoute.fridge.name);
@@ -31,32 +34,38 @@ class AppNavigationBar extends StatelessWidget {
             break;
         }
       },
-      destinations: const [
-        NavigationDestination(
+      destinations: [
+        const NavigationDestination(
           icon: Icon(Icons.kitchen_outlined),
           selectedIcon: Icon(Icons.kitchen),
           label: 'Mon Frigo',
+          tooltip: kIsWeb ? '' : null,
         ),
-        NavigationDestination(
+        const NavigationDestination(
           icon: Icon(Icons.receipt_long_outlined),
           selectedIcon: Icon(Icons.receipt_long),
           label: 'Ma liste',
+          tooltip: kIsWeb ? '' : null,
         ),
         NavigationDestination(
-          icon: Badge(
+          icon: const Badge(
             label: Text('2'),
             child: Icon(Icons.notifications_outlined),
           ),
           selectedIcon: Badge(
-            label: Text('2'),
-            child: Icon(Icons.notifications),
+            label: Text(
+              alertsMock.where((alert) => !alert.isRead).length.toString(),
+            ),
+            child: const Icon(Icons.notifications),
           ),
           label: 'Mes alertes',
+          tooltip: kIsWeb ? '' : null,
         ),
-        NavigationDestination(
+        const NavigationDestination(
           icon: Icon(Icons.account_circle_outlined),
           selectedIcon: Icon(Icons.account_circle),
           label: 'Mon profil',
+          tooltip: kIsWeb ? '' : null,
         ),
       ],
     );

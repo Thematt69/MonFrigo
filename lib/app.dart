@@ -119,12 +119,7 @@ class _MyAppState extends State<MyApp> {
         title: message.notification!.title!,
         body: message.notification!.body!,
         onPressed: () {
-          context.goNamed(
-            AppRoute.alerts.name,
-            pathParameters: {
-              'uuid': message.data['uuid'] as String,
-            },
-          );
+          context.goNamed(AppRoute.alerts.name);
         },
       );
     }
@@ -155,10 +150,18 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: lightColorScheme,
+          scrollbarTheme: const ScrollbarThemeData(
+            thumbVisibility: MaterialStatePropertyAll(true),
+            trackVisibility: MaterialStatePropertyAll(true),
+          ),
         ),
         darkTheme: ThemeData(
           useMaterial3: true,
           colorScheme: darkColorScheme,
+          scrollbarTheme: const ScrollbarThemeData(
+            thumbVisibility: MaterialStatePropertyAll(true),
+            trackVisibility: MaterialStatePropertyAll(true),
+          ),
         ),
         routeInformationParser: goRouter.routeInformationParser,
         routeInformationProvider: goRouter.routeInformationProvider,
