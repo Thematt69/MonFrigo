@@ -45,9 +45,11 @@ class AppNavigationRail extends StatelessWidget {
           label: Text('Ma liste'),
         ),
         NavigationRailDestination(
-          icon: const Badge(
-            label: Text('2'),
-            child: Icon(Icons.notifications_outlined),
+          icon: Badge(
+            label: Text(
+              alertsMock.where((alert) => !alert.isRead).length.toString(),
+            ),
+            child: const Icon(Icons.notifications_outlined),
           ),
           selectedIcon: Badge(
             label: Text(

@@ -48,9 +48,11 @@ class AppNavigationBar extends StatelessWidget {
           tooltip: kIsWeb ? '' : null,
         ),
         NavigationDestination(
-          icon: const Badge(
-            label: Text('2'),
-            child: Icon(Icons.notifications_outlined),
+          icon: Badge(
+            label: Text(
+              alertsMock.where((alert) => !alert.isRead).length.toString(),
+            ),
+            child: const Icon(Icons.notifications_outlined),
           ),
           selectedIcon: Badge(
             label: Text(
