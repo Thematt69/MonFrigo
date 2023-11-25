@@ -71,101 +71,106 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Form(
-            key: _formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ClipOval(
-                  child: Image.asset(
-                    'assets/images/8.0x/flutter_logo.png',
-                    height: 200,
-                  ),
-                ),
-                const SizedBox(height: 32),
-                TextFormField(
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Adresse email',
-                    border: OutlineInputBorder(),
-                  ),
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Veuillez entrer votre email';
-                    } else if (!value.isValidEmail()) {
-                      return 'Veuillez entrer un email valide';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-                ValueListenableBuilder(
-                  valueListenable: _passwordVisibility,
-                  builder: (context, passwordVisibility, child) =>
-                      TextFormField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      labelText: 'Mot de passe',
-                      border: const OutlineInputBorder(),
-                      suffixIcon: IconButton(
-                        onPressed: () => _passwordVisibility.value =
-                            !_passwordVisibility.value,
-                        icon: Icon(
-                          passwordVisibility
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                        ),
-                        tooltip: passwordVisibility
-                            ? 'Masquer le mot de passe'
-                            : 'Afficher le mot de passe',
-                      ),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: 600,
+          ),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Form(
+              key: _formKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipOval(
+                    child: Image.asset(
+                      'assets/images/8.0x/flutter_logo.png',
+                      height: 200,
                     ),
-                    obscureText: !passwordVisibility,
-                    textInputAction: TextInputAction.done,
-                    onEditingComplete: _signIn,
-                    keyboardType: TextInputType.visiblePassword,
+                  ),
+                  const SizedBox(height: 32),
+                  TextFormField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                      labelText: 'Adresse email',
+                      border: OutlineInputBorder(),
+                    ),
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Veuillez entrer votre mot de passe';
-                      } else if (value.length < 8) {
-                        return "Veuillez entrer un mot de passe d'au moins 8 caractères";
-                      } else if (!value.containsNumber()) {
-                        return 'Veuillez entrer un mot de passe contenant au moins un chiffre';
-                      } else if (!value.containsUppercase()) {
-                        return 'Veuillez entrer un mot de passe contenant au moins une majuscule';
-                      } else if (!value.containsLowercase()) {
-                        return 'Veuillez entrer un mot de passe contenant au moins une minuscule';
+                        return 'Veuillez entrer votre email';
+                      } else if (!value.isValidEmail()) {
+                        return 'Veuillez entrer un email valide';
                       }
                       return null;
                     },
                   ),
-                ),
-                const SizedBox(height: 32),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: _signIn,
-                      child: const Text('Se connecter'),
+                  const SizedBox(height: 16),
+                  ValueListenableBuilder(
+                    valueListenable: _passwordVisibility,
+                    builder: (context, passwordVisibility, child) =>
+                        TextFormField(
+                      controller: _passwordController,
+                      decoration: InputDecoration(
+                        labelText: 'Mot de passe',
+                        border: const OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          onPressed: () => _passwordVisibility.value =
+                              !_passwordVisibility.value,
+                          icon: Icon(
+                            passwordVisibility
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                          ),
+                          tooltip: passwordVisibility
+                              ? 'Masquer le mot de passe'
+                              : 'Afficher le mot de passe',
+                        ),
+                      ),
+                      obscureText: !passwordVisibility,
+                      textInputAction: TextInputAction.done,
+                      onEditingComplete: _signIn,
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Veuillez entrer votre mot de passe';
+                        } else if (value.length < 8) {
+                          return "Veuillez entrer un mot de passe d'au moins 8 caractères";
+                        } else if (!value.containsNumber()) {
+                          return 'Veuillez entrer un mot de passe contenant au moins un chiffre';
+                        } else if (!value.containsUppercase()) {
+                          return 'Veuillez entrer un mot de passe contenant au moins une majuscule';
+                        } else if (!value.containsLowercase()) {
+                          return 'Veuillez entrer un mot de passe contenant au moins une minuscule';
+                        }
+                        return null;
+                      },
                     ),
-                    const SizedBox(width: 32),
-                    ElevatedButton(
-                      onPressed: _signUp,
-                      child: const Text("S'inscrire"),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 32),
-                FilledButton(
-                  onPressed: _signInWithGoogle,
-                  child: const Text('Se connecter avec Google'),
-                ),
-              ],
+                  ),
+                  const SizedBox(height: 32),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: _signIn,
+                        child: const Text('Se connecter'),
+                      ),
+                      const SizedBox(width: 32),
+                      ElevatedButton(
+                        onPressed: _signUp,
+                        child: const Text("S'inscrire"),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+                  FilledButton(
+                    onPressed: _signInWithGoogle,
+                    child: const Text('Se connecter avec Google'),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

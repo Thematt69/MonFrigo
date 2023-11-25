@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../error_app.dart';
-import '../pages/alert_detail_page.dart';
-import '../pages/alerts_page.dart';
+import '../pages/alerts/alerts_page.dart';
 import '../pages/fridge_page.dart';
-import '../pages/profile_page.dart';
+import '../pages/profile/profile_page.dart';
 import '../pages/shopping_list_page.dart';
 import '../pages/sign_in_page.dart';
 
@@ -16,7 +15,6 @@ enum AppRoute {
   fridge, // Mon frigo
   shoppingList, // Ma liste de courses
   alerts, // Mes alertes
-  alertDetail, // Détail d'une alerte
   profile, // Mon profil
 }
 
@@ -119,18 +117,6 @@ final goRouter = GoRouter(
         state: state,
         child: const AlertsPage(),
       ),
-      routes: [
-        GoRoute(
-          path: ':uuid',
-          name: AppRoute.alertDetail.name,
-          pageBuilder: (context, state) => _noTransitionBuilder(
-            state: state,
-            child: AlertDetailPage(
-              uuid: state.pathParameters['uuid']!,
-            ),
-          ),
-        ),
-      ],
     ),
     GoRoute(
       path: '/profile',

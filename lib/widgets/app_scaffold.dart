@@ -25,6 +25,7 @@ class AppScaffold extends StatelessWidget {
             ),
       body: !context.isOnMobile
           ? Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppNavigationRail(
                   key: ValueKey(index),
@@ -32,18 +33,12 @@ class AppScaffold extends StatelessWidget {
                 ),
                 const VerticalDivider(thickness: 1, width: 1),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: body,
-                  ),
+                  child: body,
                 ),
               ],
             )
           : SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: body,
-              ),
+              child: body,
             ),
     );
   }
