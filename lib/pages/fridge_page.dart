@@ -10,18 +10,21 @@ class FridgePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       index: 0,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Mon frigo :',
-            style: context.textTheme.titleMedium,
-          ),
-          const Text('Visualiser les produits'),
-          const Text('Ajouter des produits'),
-          const Text("Modifier la quantité d'un produit"),
-          const Text('Supprimer des produits'),
-        ],
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Mon frigo :',
+              style: context.textTheme.titleMedium,
+            ),
+            const Text('Visualiser les produits'),
+            const Text('Ajouter des produits'),
+            const Text("Modifier la quantité d'un produit"),
+            const Text('Supprimer des produits'),
+          ],
+        ),
       ),
     );
   }
