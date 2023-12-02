@@ -1,33 +1,35 @@
 import 'package:equatable/equatable.dart';
 
 class Alert extends Equatable {
+  static const String tableName = 'alerts';
+
   final String uuid;
-  final String title;
-  final String description;
+  final String label;
   final DateTime dateTime;
   final bool isRead;
+  final DateTime expirationDate;
 
   const Alert({
     required this.uuid,
-    required this.title,
-    required this.description,
+    required this.label,
     required this.dateTime,
     required this.isRead,
+    required this.expirationDate,
   });
 
   Alert copyWith({
     String? uuid,
     String? title,
-    String? description,
     DateTime? dateTime,
     bool? isRead,
+    DateTime? expirationDate,
   }) {
     return Alert(
       uuid: uuid ?? this.uuid,
-      title: title ?? this.title,
-      description: description ?? this.description,
+      label: title ?? label,
       dateTime: dateTime ?? this.dateTime,
       isRead: isRead ?? this.isRead,
+      expirationDate: expirationDate ?? this.expirationDate,
     );
   }
 
@@ -38,10 +40,10 @@ class Alert extends Equatable {
   List<Object> get props {
     return [
       uuid,
-      title,
-      description,
+      label,
       dateTime,
       isRead,
+      expirationDate,
     ];
   }
 }

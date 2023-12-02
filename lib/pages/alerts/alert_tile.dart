@@ -17,22 +17,14 @@ class AlertTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(alert.title),
-      subtitle: Row(
-        children: [
-          if (!alert.isRead) ...[
-            const Badge(
-              label: Text('Non-lu'),
-            ),
-            const SizedBox(width: 8),
-          ],
-          Expanded(child: Text(alert.description)),
-        ],
-      ),
+      title: Text(alert.label),
       trailing: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          if (!alert.isRead) ...[
+            const Badge(label: Text('Non-lu')),
+          ],
           Text(_dateFormatter.format(alert.dateTime)),
           Text(_timeFormatter.format(alert.dateTime)),
         ],

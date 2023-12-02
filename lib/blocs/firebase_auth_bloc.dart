@@ -15,6 +15,8 @@ class FirebaseAuthBloc extends BlocBase {
   @override
   void dispose() {}
 
+  User? get currentUser => FirebaseAuth.instance.currentUser;
+
   Future<Either<void, String>> deleteCurrentUser() async {
     try {
       await FirebaseAuth.instance.currentUser?.delete();

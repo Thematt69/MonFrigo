@@ -4,7 +4,7 @@ import '../../mock_values.dart';
 import '../../models/alert.dart';
 import '../../widgets/app_scaffold.dart';
 import 'alert_tile.dart';
-import 'alerts_filters.dart';
+import 'alerts_tab_bar.dart';
 
 class AlertsPage extends StatefulWidget {
   const AlertsPage({super.key});

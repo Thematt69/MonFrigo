@@ -7,22 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  analyze:
-    name: Analyze
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4.1.1
-      - uses: subosito/flutter-action@v2.12.0
-        with:
-          flutter-version: ${{ vars.FLUTTER_VERSION }}
-          cache: true
-          cache-key: flutter ${{ vars.FLUTTER_VERSION }}
-      - run: flutter config --no-analytics
-      - run: flutter pub get
-      - run: flutter analyze
-
   build:
-    name: Build Android
+    name: Builds Android
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.1
@@ -51,6 +37,13 @@ jobs:
         with:
           name: "build-release"
           path: build/app/outputs/bundle/release/*.aab
+      - name: Build APK Release
+        run: flutter build apk --release
+      - name: Push build to Releases
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: "build-release"
+          path: build/app/outputs/flutter-apk/*release.apk
 
   deploy:
     name: Deploy web

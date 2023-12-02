@@ -8,7 +8,6 @@ extension ObjectExtension on Object {
     StackTrace stackTrace,
     String name,
   ) {
-    // TODO: Add translation
     log(
       'Erreur capturée : $this',
       error: this,
@@ -26,27 +25,25 @@ extension ObjectExtension on Object {
 
 extension FirebaseAuthExceptionExtension on FirebaseAuthException {
   String logException(StackTrace stackTrace, String location) {
-    // TODO: Add translation
     final message = switch (code) {
       ('provider-already-linked') =>
-        'The provider has already been linked to the user.',
-      ('invalid-credential') => "The provider's credential is not valid.",
+        "Ce type de compte a déjà été lié à l'utilisateur.",
+      ('invalid-credential') => 'Les identifiants ne sont pas valides.',
       ('credential-already-in-use') =>
-        'The account corresponding to the credential already exists, or is already linked to a Firebase User.',
-      ('user-not-found') => 'No user found for that email.',
-      ('wrong-password') => 'Wrong password provided for that user.',
-      ('weak-password') => 'The password provided is too weak.',
-      ('email-already-in-use') => 'The account already exists for that email.',
+        'Un compte existe déjà avec ses identifiants.',
+      ('user-not-found') => 'Aucun utilisateur trouvé pour cet e-mail.',
+      ('wrong-password') => 'Mauvais mot de passe fourni pour cet utilisateur.',
+      ('weak-password') => 'Le mot de passe fourni est trop faible.',
+      ('email-already-in-use') => 'Le compte existe déjà pour cet e-mail.',
       ('account-exists-with-different-credential') =>
-        'Thrown if there already exists an account with the email address asserted by the credential. Resolve this by calling [fetchSignInMethodsForEmail] and then asking the user to sign in using one of the returned providers. Once the user is signed in, the original credential can be linked to the user with [linkWithCredential].',
+        'Un compte existe déjà avec cet e-mail mais avec un type de connexion différent.',
       ('operation-not-allowed') =>
-        'Thrown if the type of account corresponding to the credential is not enabled. Enable the account type in the Firebase Console, under the Auth tab.',
-      ('user-disabled') =>
-        'Thrown if the user corresponding to the given credential has been disabled.',
-      ('invalid-email') => 'Thrown if the email address is not valid.',
+        'Ce type de compte n’est pas autorisé. Veuillez contacter le support.',
+      ('user-disabled') => 'Cette utilisateur a été désactivé.',
+      ('invalid-email') => "L'adresse e-mail n'est pas valide.",
       ('requires-recent-login') =>
-        "Thrown if the user'final s last sign-in final time does not final meet the security threshold. Use [User.reauthenticateWithCredential] to final resolve. This does not apply if the user is anonymous.",
-      (_) => 'Failed with error code: $code'
+        "L'heure de la dernière connexion ne respecte pas les critères de sécurité. Veuillez vous reconnecter et réessayer.",
+      (_) => "Échec avec code d'erreur: $code"
     };
     log(
       message,
@@ -65,38 +62,36 @@ extension FirebaseAuthExceptionExtension on FirebaseAuthException {
 
 extension FirebaseExceptionExtension on FirebaseException {
   String logException(StackTrace stackTrace, String location) {
-    // TODO: Add translation
     final message = switch (code) {
       ('storage/object-not-found') =>
-        'No object exists at the desired reference.',
+        "Aucun objet n'existe à la référence souhaitée.",
       ('storage/bucket-not-found') =>
-        'No bucket is configured for Firebase Storage.',
+        "Aucun compartiment n'est configuré pour Firebase Storage.",
       ('storage/project-not-found') =>
-        'No project is configured for Firebase Storage.',
-      ('storage/quota-exceeded') =>
-        "Quota on your Cloud Storage bucket has been exceeded. If you're on the no-cost tier, upgrade to a paid plan. If you're on a paid plan, reach out to Firebase support.",
+        'Aucun projet n’est configuré pour Firebase Storage.',
+      ('storage/quota-exceeded') => 'Les limites de quota ont été dépassées.',
       ('storage/unauthenticated') =>
-        'User is unauthenticated, please authenticate and try again.',
+        'L’utilisateur n’est pas authentifié. Authentifiez-vous et réessayez.',
       ('storage/unauthorized') =>
-        'User is not authorized to perform the desired action, check your security rules to ensure they are correct.',
+        'L’utilisateur n’est pas autorisé à effectuer l’action souhaitée. Veuillez contacter le support.',
       ('storage/retry-limit-exceeded') =>
-        'The maximum time limit on an operation (upload, download, delete, etc.) has been exceeded. Try uploading again.',
+        'Le nombre maximal de tentatives de transfert a été dépassé. Veuillez réessayer ultérieurement.',
       ('storage/invalid-checksum') =>
-        'File on the client does not match the checksum of the file received by the server. Try uploading again.',
-      ('storage/canceled') => 'User canceled the operation.',
+        'Le fichier sur le disque ne correspond pas au fichier d’origine. Veuillez réessayer.',
+      ('storage/canceled') => "L'utilisateur a annulé l'opération.",
       ('storage/invalid-event-name') =>
-        'Invalid event name provided. Must be one of [running, progress, pause]',
+        'Le nom de l’événement fourni n’est pas valide. Doit être l’un des suivants: [running, progress, pause]',
       ('storage/invalid-url') =>
-        'Invalid URL provided to refFromURL(). Must be of the form: gs://bucket/object or https://firebasestorage.googleapis.com/v0/b/bucket/o/object?token=<TOKEN>',
+        "L'URL fournie ne correspond pas à l'URL attendue.",
       ('storage/invalid-argument') =>
-        'The argument passed to put() must be File, Blob, or UInt8 Array. The argument passed to putString() must be a raw, Base64, or Base64URL string.',
+        "Un argument non valide a été fourni à l'opération.",
       ('storage/no-default-bucket') =>
-        "No bucket has been set in your config's storageBucket property.",
+        "Aucun compartiment n'est configuré par défaut et aucun compartiment n'a été fourni. Veuillez contacter le support.",
       ('storage/cannot-slice-blob') =>
-        "Commonly occurs when the local file has changed (deleted, saved again, etc.). Try uploading again after verifying that the file hasn't changed.",
+        "Le fichier n'a pu être enregistré. Veuillez réessayer.",
       ('storage/server-file-wrong-size') =>
-        'File on the client does not match the size of the file recieved by the server. Try uploading again.',
-      (_) => 'Failed with error code: $code',
+        'Le fichier enregistré ne correspond pas à la taille du fichier d’origine. Veuillez réessayer.',
+      (_) => "Échec avec code d'erreur: $code",
     };
     log(
       message,
