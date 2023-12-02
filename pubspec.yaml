@@ -3,10 +3,10 @@ description: Qu'est-ce qu'il y a dans mon frigo ?
 
 publish_to: 'none'
 
-version: 0.0.1+8
+version: 0.0.1+9
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
   cloud_firestore: ^4.13.3
