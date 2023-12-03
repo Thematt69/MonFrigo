@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'models/alert.dart';
 import 'models/group.dart';
+import 'models/product.dart';
 
 final groupsMock = [
   const Group(
@@ -11,6 +12,35 @@ final groupsMock = [
       'XL2kMULSzGdcz7Szaembf58hf2F3',
       'E8PcQIlN4oMGALFV6fuDrG2GZq22',
     ],
+  ),
+];
+
+final fridgeProductsMock = [
+  Product(
+    uuid: 'b32c3d7b-f46a-49c5-93ab-1d7b12bb2629.jfif',
+    name: 'Oeufs',
+    number: 2,
+    quantity: 12,
+    unit: ProductUnit.unit,
+    isMark: false,
+    purchaseDate: DateTime.parse('2023-11-28 20:43:10'),
+    expirationDuration: const Duration(days: 14),
+    notifExpireInTwoDays: false,
+    notifExpireToday: false,
+    notifExpiredOverWeek: false,
+  ),
+  Product(
+    uuid: 'bbc1c5a2-4f03-417c-8e6e-e18a512c6ebc.jfif',
+    name: 'Lait demi-écrémé UHT',
+    number: 8,
+    quantity: 1,
+    unit: ProductUnit.liter,
+    isMark: false,
+    purchaseDate: DateTime.parse('2023-12-01 15:21:44'),
+    expirationDuration: const Duration(days: 60),
+    notifExpireInTwoDays: false,
+    notifExpireToday: false,
+    notifExpiredOverWeek: false,
   ),
 ];
 

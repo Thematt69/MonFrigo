@@ -18,6 +18,8 @@ extension BuildContextExtension on BuildContext {
   /// Extension on ScaffoldMessengerState
   ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
 
+  bool get isOnRatioDesktop => mediaQuery.size.width > mediaQuery.size.height;
+
   /// Extension to check if the app run on mobile
   bool get isOnMobile => AppBreakpoint.isSmall(mediaQuery.size.width);
 
