@@ -526,7 +526,10 @@ packages:
     source: hosted
     version: "1.0.4"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> f233e1f1c01712cc39ee7828e24d6f88dd4665a2
   octo_image:
     dependency: transitive
     description:
