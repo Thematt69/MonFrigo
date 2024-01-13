@@ -27,7 +27,7 @@ jobs:
           cache: true
           cache-key: flutter ${{ vars.FLUTTER_VERSION }}
       - name: Configure Flutter
-        run: |
+        run: | 
           flutter config --no-analytics
           flutter pub get
       - name: Build AppBundle Release

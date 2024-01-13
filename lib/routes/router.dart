@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../error_app.dart';
 import '../pages/alerts/alerts_page.dart';
-import '../pages/fridge_page.dart';
+import '../pages/fridge/fridge_page.dart';
 import '../pages/profile/profile_page.dart';
 import '../pages/shopping_list_page.dart';
 import '../pages/sign_in_page.dart';

@@ -27,6 +27,7 @@ class _AlertsPageState extends State<AlertsPage>
   void dispose() {
     super.dispose();
     _tabController.dispose();
+    // TODO: set all alerts as read
   }
 
   List<Alert> get _allAlerts => alertsMock;

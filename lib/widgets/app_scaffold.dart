@@ -17,13 +17,13 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: !context.isOnMobile
+      bottomNavigationBar: context.isOnRatioDesktop
           ? null
           : AppNavigationBar(
               key: ValueKey(index),
               index: index,
             ),
-      body: !context.isOnMobile
+      body: context.isOnRatioDesktop
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
