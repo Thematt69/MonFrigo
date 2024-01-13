@@ -1,4 +1,4 @@
-name: Analyze, Build and Deploy
+name: Build and Deploy
 
 on:
   push:
@@ -27,18 +27,18 @@ jobs:
           cache: true
           cache-key: flutter ${{ vars.FLUTTER_VERSION }}
       - name: Configure Flutter
-        run: | 
+        run: |
           flutter config --no-analytics
           flutter pub get
       - name: Build AppBundle Release
-        run: flutter build appbundle --release
+        run: flutter build appbundle --release --no-tree-shake-icons
       - name: Push build to Releases
         uses: actions/upload-artifact@v3.1.3
         with:
           name: "build-release"
           path: build/app/outputs/bundle/release/*.aab
       - name: Build APK Release
-        run: flutter build apk --release
+        run: flutter build apk --release --no-tree-shake-icons
       - name: Push build to Releases
         uses: actions/upload-artifact@v3.1.3
         with:
@@ -60,7 +60,7 @@ jobs:
           flutter config --no-analytics
           flutter pub get
       - name: Build Web Release
-        run: flutter build web --release
+        run: flutter build web --release --no-tree-shake-icons
       - name: Sync files FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
