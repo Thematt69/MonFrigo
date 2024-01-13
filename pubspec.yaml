@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 0.0.1+9
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 
 dependencies:
   cloud_firestore: ^4.13.3
@@ -24,7 +24,7 @@ dependencies:
   flutter_localizations: { sdk: flutter }
   flutter_web_plugins: { sdk: flutter }
   fpdart: ^1.1.0
-  go_router: ^12.1.1
+  go_router: ^13.0.1
   google_sign_in: ^6.1.6
   intl: ^0.18.1
   rxdart: ^0.27.7

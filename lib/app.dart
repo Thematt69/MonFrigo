@@ -12,6 +12,7 @@ import 'package:go_router/go_router.dart';
 import 'blocs/bloc_provider.dart';
 import 'blocs/firebase_auth_bloc.dart';
 import 'blocs/firebase_storage_bloc.dart';
+import 'blocs/firebase_store_bloc.dart';
 import 'extension/build_context.dart';
 import 'extension/remote_notification.dart';
 import 'firebase_options.dart';
@@ -131,6 +132,7 @@ class _MyAppState extends State<MyApp> {
       key: GlobalKey(),
       blocs: <BlocBase>[
         FirebaseAuthBloc(),
+        FirebaseStoreBloc(),
         FirebaseStorageBloc(),
       ],
       child: MaterialApp.router(
