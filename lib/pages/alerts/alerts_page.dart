@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../../mock_values.dart';
-import '../../models/alert.dart';
-import '../../widgets/app_scaffold.dart';
-import 'alert_tile.dart';
-import 'alerts_tab_bar.dart';
+import 'package:mon_frigo/mock_values.dart';
+import 'package:mon_frigo/models/alert.dart';
+import 'package:mon_frigo/pages/alerts/alert_tile.dart';
+import 'package:mon_frigo/pages/alerts/alerts_tab_bar.dart';
+import 'package:mon_frigo/widgets/app_scaffold.dart';
 
 class AlertsPage extends StatefulWidget {
   const AlertsPage({super.key});
@@ -27,7 +26,7 @@ class _AlertsPageState extends State<AlertsPage>
   void dispose() {
     super.dispose();
     _tabController.dispose();
-    // TODO: set all alerts as read
+    // TODO(Matthieu): set all alerts as read
   }
 
   List<Alert> get _allAlerts => alertsMock;

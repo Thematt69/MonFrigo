@@ -1,12 +1,11 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:mon_frigo/blocs/bloc_provider.dart';
+import 'package:mon_frigo/blocs/firebase_auth_bloc.dart';
+import 'package:mon_frigo/extension/build_context.dart';
+import 'package:mon_frigo/mock_values.dart';
+import 'package:mon_frigo/models/group.dart';
 import 'package:share_plus/share_plus.dart';
-
-import '../../blocs/bloc_provider.dart';
-import '../../blocs/firebase_auth_bloc.dart';
-import '../../extension/build_context.dart';
-import '../../mock_values.dart';
-import '../../models/group.dart';
 
 class GroupSection extends StatefulWidget {
   const GroupSection({super.key});
@@ -70,7 +69,7 @@ class _GroupSectionState extends State<GroupSection> {
           const SizedBox(height: 8),
           ElevatedButton.icon(
             onPressed: () {
-              // TODO: quit group
+              // TODO(Matthieu): quit group
             },
             icon: const Icon(Icons.exit_to_app_outlined),
             label: const Text('Quitter le groupe'),
@@ -96,7 +95,7 @@ class _GroupSectionState extends State<GroupSection> {
                   suffixIcon: IconButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        // TODO: join group
+                        // TODO(Matthieu): join group
                       }
                     },
                     icon: const Icon(Icons.check_outlined),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../extension/build_context.dart';
-import '../widgets/app_scaffold.dart';
+import 'package:mon_frigo/extension/build_context.dart';
+import 'package:mon_frigo/widgets/app_scaffold.dart';
 
 class ShoppingListPage extends StatelessWidget {
   const ShoppingListPage({super.key});

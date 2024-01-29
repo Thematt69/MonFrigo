@@ -4,9 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-import '../extension/exception.dart';
-import 'bloc_provider.dart';
+import 'package:mon_frigo/blocs/bloc_provider.dart';
+import 'package:mon_frigo/extension/exception.dart';
 
 class FirebaseAuthBloc extends BlocBase {
   @override
@@ -109,9 +108,7 @@ class FirebaseAuthBloc extends BlocBase {
   Future<Either<UserCredential?, String>> signInWithGoogle() async {
     try {
       if (kIsWeb) {
-        final googleProvider = GoogleAuthProvider();
-
-        googleProvider
+        final googleProvider = GoogleAuthProvider()
             .addScope('https://www.googleapis.com/auth/userinfo.profile');
 
         final user =

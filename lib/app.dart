@@ -9,15 +9,15 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 
-import 'blocs/bloc_provider.dart';
-import 'blocs/firebase_auth_bloc.dart';
-import 'blocs/firebase_storage_bloc.dart';
-import 'blocs/firebase_store_bloc.dart';
-import 'extension/build_context.dart';
-import 'extension/remote_notification.dart';
-import 'firebase_options.dart';
-import 'routes/router.dart';
-import 'themes/color_schemes.dart';
+import 'package:mon_frigo/blocs/bloc_provider.dart';
+import 'package:mon_frigo/blocs/firebase_auth_bloc.dart';
+import 'package:mon_frigo/blocs/firebase_storage_bloc.dart';
+import 'package:mon_frigo/blocs/firebase_store_bloc.dart';
+import 'package:mon_frigo/extension/build_context.dart';
+import 'package:mon_frigo/extension/remote_notification.dart';
+import 'package:mon_frigo/firebase_options.dart';
+import 'package:mon_frigo/routes/router.dart';
+import 'package:mon_frigo/themes/color_schemes.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -53,13 +53,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> _initMessaging() async {
     await FirebaseMessaging.instance
         .requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
+      
     )
         .then((settings) {
       dev.log(

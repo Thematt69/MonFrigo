@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../blocs/bloc_provider.dart';
-import '../../blocs/firebase_store_bloc.dart';
-import '../../extension/build_context.dart';
-import '../../widgets/app_scaffold.dart';
-import '../../widgets/custom_builder.dart';
+import 'package:mon_frigo/blocs/bloc_provider.dart';
+import 'package:mon_frigo/blocs/firebase_store_bloc.dart';
+import 'package:mon_frigo/extension/build_context.dart';
+import 'package:mon_frigo/widgets/app_scaffold.dart';
+import 'package:mon_frigo/widgets/custom_builder.dart';
 
 class FridgePage extends StatefulWidget {
   const FridgePage({super.key});

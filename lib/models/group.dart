@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 
 class Group extends Equatable {
-  static const String tableName = 'groups';
-
-  final String uuid;
-  final String name;
-  final List<String> usersUuid;
 
   const Group({
     required this.uuid,
     required this.name,
     required this.usersUuid,
   });
+  static const String tableName = 'groups';
+
+  final String uuid;
+  final String name;
+  final List<String> usersUuid;
 
   String get codeShare => uuid.substring(0, uuid.indexOf('-'));
 

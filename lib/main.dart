@@ -8,8 +8,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import 'app.dart';
-import 'firebase_options.dart';
+import 'package:mon_frigo/app.dart';
+import 'package:mon_frigo/firebase_options.dart';
 
 void main() {
   runZonedGuarded<Future<void>>(

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../models/generic_product.dart';
-import 'bloc_provider.dart';
+import 'package:mon_frigo/blocs/bloc_provider.dart';
+import 'package:mon_frigo/models/generic_product.dart';
 
 class FirebaseStoreBloc extends BlocBase {
   final CollectionReference<GenericProduct> _genericProductsCollection =

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart' as fpdart;
 import 'package:go_router/go_router.dart';
 
-import '../blocs/bloc_provider.dart';
-import '../blocs/firebase_auth_bloc.dart';
-import '../extension/build_context.dart';
-import '../extension/string.dart';
-import '../routes/router.dart';
+import 'package:mon_frigo/blocs/bloc_provider.dart';
+import 'package:mon_frigo/blocs/firebase_auth_bloc.dart';
+import 'package:mon_frigo/extension/build_context.dart';
+import 'package:mon_frigo/extension/string.dart';
+import 'package:mon_frigo/routes/router.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
