@@ -1,4 +1,4 @@
-abstract class AppBreakpoint {
+mixin AppBreakpoint {
   static const smallBreakpoint = 768.0;
   static const mediumBreakpoint = 1024.0;
 

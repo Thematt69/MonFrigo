@@ -2,16 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 class GenericProduct extends Equatable {
-  static const collectionName = 'genericProducts';
-  static const entryUid = 'uid';
-  static const entryName = 'name';
-  static const entryDescription = 'description';
-  static const entryIcon = 'icon';
-
-  final String uid;
-  final String name;
-  final String? description;
-  final IconData icon;
 
   const GenericProduct({
     required this.uid,
@@ -30,6 +20,16 @@ class GenericProduct extends Equatable {
           : Icons.category_outlined,
     );
   }
+  static const collectionName = 'genericProducts';
+  static const entryUid = 'uid';
+  static const entryName = 'name';
+  static const entryDescription = 'description';
+  static const entryIcon = 'icon';
+
+  final String uid;
+  final String name;
+  final String? description;
+  final IconData icon;
 
   Map<String, dynamic> toFirestore() {
     return <String, dynamic>{

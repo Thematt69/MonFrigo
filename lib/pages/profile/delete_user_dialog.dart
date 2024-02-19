@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../extension/build_context.dart';
+import 'package:mon_frigo/extension/build_context.dart';
 
 class DeleteUserDialog extends StatelessWidget {
   const DeleteUserDialog({super.key});
@@ -11,7 +11,6 @@ class DeleteUserDialog extends StatelessWidget {
       title: const Text('Supprimer mon compte'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
             'Êtes-vous sûr de vouloir supprimer votre compte ?',

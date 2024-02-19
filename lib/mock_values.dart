@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'models/alert.dart';
-import 'models/group.dart';
-import 'models/product.dart';
+import 'package:mon_frigo/models/alert.dart';
+import 'package:mon_frigo/models/group.dart';
+import 'package:mon_frigo/models/product.dart';
 
 final groupsMock = [
   const Group(

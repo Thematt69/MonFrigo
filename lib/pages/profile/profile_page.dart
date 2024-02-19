@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../widgets/app_scaffold.dart';
-import 'group_section.dart';
-import 'setting_section.dart';
+import 'package:mon_frigo/pages/profile/group_section.dart';
+import 'package:mon_frigo/pages/profile/setting_section.dart';
+import 'package:mon_frigo/widgets/app_scaffold.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

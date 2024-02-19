@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../blocs/bloc_provider.dart';
-import '../../blocs/firebase_auth_bloc.dart';
-import '../../extension/build_context.dart';
-import '../../routes/router.dart';
-import 'delete_user_dialog.dart';
-import 'sign_out_dialog.dart';
+import 'package:mon_frigo/blocs/bloc_provider.dart';
+import 'package:mon_frigo/blocs/firebase_auth_bloc.dart';
+import 'package:mon_frigo/extension/build_context.dart';
+import 'package:mon_frigo/pages/profile/delete_user_dialog.dart';
+import 'package:mon_frigo/pages/profile/sign_out_dialog.dart';
+import 'package:mon_frigo/routes/router.dart';
 
 class SettingSection extends StatelessWidget {
   const SettingSection({super.key});

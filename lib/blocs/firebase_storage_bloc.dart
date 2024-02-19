@@ -3,9 +3,8 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-
-import '../extension/exception.dart';
-import 'bloc_provider.dart';
+import 'package:mon_frigo/blocs/bloc_provider.dart';
+import 'package:mon_frigo/extension/exception.dart';
 
 class FirebaseStorageBloc extends BlocBase {
   final FirebaseStorage _storage = FirebaseStorage.instance;

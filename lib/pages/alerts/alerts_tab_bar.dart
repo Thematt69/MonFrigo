@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../mock_values.dart';
+import 'package:mon_frigo/mock_values.dart';
 
 class AlertsTabBar extends StatefulWidget {
   const AlertsTabBar({
