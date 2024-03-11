@@ -1,4 +1,4 @@
-# MonFrigo
+# Mon frigo
 
 A new Flutter project.
 

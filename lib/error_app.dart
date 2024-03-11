@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:mon_frigo/extension/build_context.dart';
-import 'package:mon_frigo/themes/color_schemes.dart';
 
 class ErrorApp extends StatelessWidget {
   const ErrorApp({super.key});
@@ -26,11 +25,16 @@ class ErrorApp extends StatelessWidget {
           AppLocalizations.of(context)!.appTitle,
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: lightColorScheme,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.lightBlueAccent,
+        ),
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
-        colorScheme: darkColorScheme,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.lightBlueAccent,
+          brightness: Brightness.dark,
+        ),
       ),
       home: Builder(
         builder: (context) => const ErrorPage(),

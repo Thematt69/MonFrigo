@@ -56,11 +56,11 @@ class _GroupSectionState extends State<GroupSection> {
             onPressed: () {
               Share.share(
                 'Salut ! 👋'
-                "\nPrêt pour rejoindre mon groupe sur l'application MonFrigo ?"
+                "\nPrêt pour rejoindre mon groupe sur l'application Mon frigo ?"
                 '\n\nVoici le code à rentrer : ${group!.codeShare}'
                 '\n\nSur Android : https://bit.ly/appMonFrigo'
                 '\nSur ordinateur : http://bit.ly/monFrigo',
-                subject: 'Rejoins mon groupe sur MonFrigo !',
+                subject: 'Rejoins mon groupe sur Mon frigo !',
               );
             },
             icon: const Icon(Icons.share_outlined),
