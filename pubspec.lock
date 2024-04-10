@@ -261,26 +261,26 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_performance
-      sha256: "28cf10f0b0b8b7416b4ec800f81847ac684eb4d009a9386a7b0b5e39858be790"
+      sha256: ec864cea403ef60bddb3efd1a16ff3cb28c1f07d2781f569f33fb2f65a21ba45
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.3+17"
+    version: "0.9.4+1"
   firebase_performance_platform_interface:
     dependency: transitive
     description:
       name: firebase_performance_platform_interface
-      sha256: "85332a719cfc5c7c7af7c56821690a2db361931b70e7bbb86d3b454e9ecf9996"
+      sha256: d57dbceac655598267ed616c2f2b2b822d7c3d1c3bdc016c749ffcc4106c3f78
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.4+25"
+    version: "0.1.4+29"
   firebase_performance_web:
     dependency: transitive
     description:
       name: firebase_performance_web
-      sha256: dccc79b6eb4a1160e52d766a2fb751803b74ae76449ae3346864eb203adfad33
+      sha256: "882326f078ab691918c1f5c949577aab585711388fc509af4d09db02d7058ff0"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.4+25"
+    version: "0.1.6+1"
   firebase_storage:
     dependency: "direct main"
     description:
@@ -469,14 +469,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.18.1"
-  js:
-    dependency: transitive
-    description:
-      name: js
-      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.6.7"
   leak_tracker:
     dependency: transitive
     description:
