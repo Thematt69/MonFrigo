@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../mock_values.dart';
-import '../routes/router.dart';
+import 'package:mon_frigo/mock_values.dart';
+import 'package:mon_frigo/routes/router.dart';
 
 class AppNavigationRail extends StatelessWidget {
   const AppNavigationRail({
@@ -21,16 +21,12 @@ class AppNavigationRail extends StatelessWidget {
         switch (selectedIndex) {
           case 0:
             context.goNamed(AppRoute.fridge.name);
-            break;
           case 1:
             context.goNamed(AppRoute.shoppingList.name);
-            break;
           case 2:
             context.goNamed(AppRoute.alerts.name);
-            break;
           case 3:
             context.goNamed(AppRoute.profile.name);
-            break;
         }
       },
       destinations: [

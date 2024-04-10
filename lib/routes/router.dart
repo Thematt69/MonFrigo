@@ -3,12 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../error_app.dart';
-import '../pages/alerts/alerts_page.dart';
-import '../pages/fridge/fridge_page.dart';
-import '../pages/profile/profile_page.dart';
-import '../pages/shopping_list_page.dart';
-import '../pages/sign_in_page.dart';
+import 'package:mon_frigo/error_app.dart';
+import 'package:mon_frigo/pages/alerts/alerts_page.dart';
+import 'package:mon_frigo/pages/fridge/fridge_page.dart';
+import 'package:mon_frigo/pages/profile/profile_page.dart';
+import 'package:mon_frigo/pages/shopping_list_page.dart';
+import 'package:mon_frigo/pages/sign_in_page.dart';
 
 enum AppRoute {
   signIn, // Se connecter ou s'inscrire

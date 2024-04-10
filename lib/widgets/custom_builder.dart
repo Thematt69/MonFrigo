@@ -6,12 +6,6 @@ typedef DataBuilder<T> = Widget Function(BuildContext context, T data);
 typedef EmptyBuilder = Widget Function();
 
 class CustomFutureBuilder<T> extends StatelessWidget {
-  final Future<T>? future;
-  final T? initialData;
-  final ErrorBuilder? errorBuilder;
-  final LoadingBuilder? waitingBuilder;
-  final DataBuilder<T> dataBuilder;
-  final EmptyBuilder? emptyBuilder;
 
   const CustomFutureBuilder({
     super.key,
@@ -22,6 +16,12 @@ class CustomFutureBuilder<T> extends StatelessWidget {
     this.emptyBuilder,
     this.initialData,
   });
+  final Future<T>? future;
+  final T? initialData;
+  final ErrorBuilder? errorBuilder;
+  final LoadingBuilder? waitingBuilder;
+  final DataBuilder<T> dataBuilder;
+  final EmptyBuilder? emptyBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +53,6 @@ class CustomFutureBuilder<T> extends StatelessWidget {
 }
 
 class CustomStreamBuilder<T> extends StatelessWidget {
-  final Stream<T>? stream;
-  final T? initialData;
-  final ErrorBuilder? errorBuilder;
-  final LoadingBuilder? waitingBuilder;
-  final DataBuilder<T> dataBuilder;
-  final EmptyBuilder? emptyBuilder;
 
   const CustomStreamBuilder({
     super.key,
@@ -69,6 +63,12 @@ class CustomStreamBuilder<T> extends StatelessWidget {
     this.emptyBuilder,
     this.initialData,
   });
+  final Stream<T>? stream;
+  final T? initialData;
+  final ErrorBuilder? errorBuilder;
+  final LoadingBuilder? waitingBuilder;
+  final DataBuilder<T> dataBuilder;
+  final EmptyBuilder? emptyBuilder;
 
   @override
   Widget build(BuildContext context) {

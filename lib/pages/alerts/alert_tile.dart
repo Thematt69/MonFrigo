@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../models/alert.dart';
+import 'package:mon_frigo/models/alert.dart';
 
 class AlertTile extends StatelessWidget {
   const AlertTile({

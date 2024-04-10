@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'extension/build_context.dart';
-import 'themes/color_schemes.dart';
+import 'package:mon_frigo/extension/build_context.dart';
+import 'package:mon_frigo/themes/color_schemes.dart';
 
 class ErrorApp extends StatelessWidget {
   const ErrorApp({super.key});

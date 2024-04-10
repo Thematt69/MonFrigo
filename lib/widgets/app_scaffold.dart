@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../extension/build_context.dart';
-import 'app_navigation_bar.dart';
-import 'app_navigation_rail.dart';
+import 'package:mon_frigo/extension/build_context.dart';
+import 'package:mon_frigo/widgets/app_navigation_bar.dart';
+import 'package:mon_frigo/widgets/app_navigation_rail.dart';
 
 class AppScaffold extends StatelessWidget {
   const AppScaffold({

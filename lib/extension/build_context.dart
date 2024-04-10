@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_breakpoint.dart';
+import 'package:mon_frigo/utils/app_breakpoint.dart';
 
 extension BuildContextExtension on BuildContext {
   /// Extension on ThemeData

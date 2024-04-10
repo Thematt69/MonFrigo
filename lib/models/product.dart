@@ -8,12 +8,25 @@ enum ProductUnit {
   centiliter('cL'),
   milliliter('mL');
 
-  final String label;
-
   const ProductUnit(this.label);
+
+  final String label;
 }
 
 class Product extends Equatable {
+  const Product({
+    required this.uuid,
+    required this.name,
+    required this.purchaseDate,
+    required this.number,
+    required this.quantity,
+    required this.unit,
+    required this.isMark,
+    required this.expirationDuration,
+    required this.notifExpireInTwoDays,
+    required this.notifExpireToday,
+    required this.notifExpiredOverWeek,
+  });
   // Common
   final String uuid;
   final String name;
@@ -33,20 +46,6 @@ class Product extends Equatable {
   final bool notifExpireInTwoDays;
   final bool notifExpireToday;
   final bool notifExpiredOverWeek;
-
-  const Product({
-    required this.uuid,
-    required this.name,
-    required this.purchaseDate,
-    required this.number,
-    required this.quantity,
-    required this.unit,
-    required this.isMark,
-    required this.expirationDuration,
-    required this.notifExpireInTwoDays,
-    required this.notifExpireToday,
-    required this.notifExpiredOverWeek,
-  });
 
   Product copyWith({
     String? uuid,
