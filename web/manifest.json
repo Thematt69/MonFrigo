@@ -1,24 +1,14 @@
 {
-  "name": "MonFrigo",
-  "short_name": "MonFrigo",
+  "name": "Mon frigo",
+  "short_name": "Mon frigo",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#0175C2",
-  "theme_color": "#0175C2",
+  "background_color": "#201a1b",
+  "theme_color": "#fffbff",
   "description": "Qu'est-ce qu'il y a dans mon frigo ?",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
-    {
-      "src": "icons/favicon.png",
-      "sizes": "64x64",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/Icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
     {
       "src": "icons/Icon-192.png",
       "sizes": "192x192",
@@ -28,6 +18,18 @@
       "src": "icons/Icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "icons/Icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/Icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

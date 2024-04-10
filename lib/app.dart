@@ -17,7 +17,6 @@ import 'package:mon_frigo/extension/build_context.dart';
 import 'package:mon_frigo/extension/remote_notification.dart';
 import 'package:mon_frigo/firebase_options.dart';
 import 'package:mon_frigo/routes/router.dart';
-import 'package:mon_frigo/themes/color_schemes.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -51,11 +50,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _initMessaging() async {
-    await FirebaseMessaging.instance
-        .requestPermission(
-      
-    )
-        .then((settings) {
+    await FirebaseMessaging.instance.requestPermission().then((settings) {
       dev.log(
         'User granted permission => ${settings.authorizationStatus}',
         name: 'FirebaseMessaging',
@@ -145,7 +140,9 @@ class _MyAppState extends State<MyApp> {
             AppLocalizations.of(context)!.appTitle,
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: lightColorScheme,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.lightBlueAccent,
+          ),
           scrollbarTheme: const ScrollbarThemeData(
             thumbVisibility: MaterialStatePropertyAll(true),
             trackVisibility: MaterialStatePropertyAll(true),
@@ -153,7 +150,10 @@ class _MyAppState extends State<MyApp> {
         ),
         darkTheme: ThemeData(
           useMaterial3: true,
-          colorScheme: darkColorScheme,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.lightBlueAccent,
+            brightness: Brightness.dark,
+          ),
           scrollbarTheme: const ScrollbarThemeData(
             thumbVisibility: MaterialStatePropertyAll(true),
             trackVisibility: MaterialStatePropertyAll(true),
