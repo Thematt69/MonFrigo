@@ -1,14 +1,15 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'dev.flutter.flutter-gradle-plugin'
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
-}
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -21,44 +22,47 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
 android {
-    namespace "fr.thematt69.mon_frigo"
-
-    compileSdkVersion 33
-    ndkVersion "25.2.9519653"
-
-    compileOptions {
-        // Flag to enable support for the new language APIs
-        coreLibraryDesugaringEnabled true
-        // Sets Java compatibility to Java 8
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+    namespace 'fr.thematt69.mon_frigo'
+    compileSdk 34
+    ndkVersion '25.2.9519653'
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
     defaultConfig {
-        applicationId "fr.thematt69.mon_frigo"
-        minSdkVersion flutter.minSdkVersion
+        applicationId 'fr.thematt69.mon_frigo'
+        minSdk 19
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        ndk {
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'mips', 'mips64', 'arm64-v8a'
+        }
     }
 
     buildTypes {
         release {
             signingConfig signingConfigs.debug
+
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type. Make sure to use a build
+            // variant with `debuggable false`.
+            minifyEnabled true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
+
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
 }
@@ -67,12 +71,6 @@ flutter {
     source '../..'
 }
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.multidex:multidex:2.0.1"
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
-    implementation 'androidx.window:window:1.0.0'
-    implementation 'androidx.window:window-java:1.0.0'
-}
+dependencies { }
 
 android.buildTypes.release.ndk.debugSymbolLevel = 'FULL'

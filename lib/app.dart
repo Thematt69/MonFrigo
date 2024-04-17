@@ -141,7 +141,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.lightBlueAccent,
+            seedColor: const Color(0xFF800020),
           ),
           scrollbarTheme: const ScrollbarThemeData(
             thumbVisibility: MaterialStatePropertyAll(true),
@@ -151,7 +151,7 @@ class _MyAppState extends State<MyApp> {
         darkTheme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.lightBlueAccent,
+            seedColor: const Color(0xFF800020),
             brightness: Brightness.dark,
           ),
           scrollbarTheme: const ScrollbarThemeData(

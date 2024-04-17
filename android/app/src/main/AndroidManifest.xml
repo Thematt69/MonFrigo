@@ -12,4 +12,10 @@
         <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/ic_launcher_background" />
         <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="default_notification_channel_id" />
     </application>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
 </manifest>

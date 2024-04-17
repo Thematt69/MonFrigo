@@ -44,17 +44,15 @@ flutter:
     - assets/images/
 
 flutter_launcher_icons:
-  image_path: "assets/images/kitchen.png"
-
   android: false # generate to Android Studio
 
   web:
     generate: true
     image_path: "assets/images/kitchen.png"
-    background_color: "#201a1b"
-    theme_color: "#fffbff"
+    theme_color: "#800020"
 
 flutter_native_splash:
-  color: "#fffbff"
+  color: "#FCF8F8"
   image: assets/images/kitchen.png
-  color_dark: "#201a1b"
+  color_dark: "#1C1C1C"
+  image_dark: assets/images/kitchen.png
