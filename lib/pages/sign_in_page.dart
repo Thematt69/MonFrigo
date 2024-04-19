@@ -79,13 +79,12 @@ class _SignInPageState extends State<SignInPage> {
             padding: const EdgeInsets.all(16),
             child: Form(
               key: _formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ClipOval(
                     child: Image.asset(
-                      'assets/images/8.0x/flutter_logo.png',
+                      'assets/images/kitchen.png',
                       height: 200,
                     ),
                   ),

@@ -87,7 +87,6 @@ class _GroupSectionState extends State<GroupSection> {
             ),
             child: Form(
               key: formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Code de partage',
